@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import json
 from io import BytesIO
 
 st.set_page_config(page_title="Ferramentas Pizzatto", layout="centered")
@@ -15,12 +14,10 @@ if pagina == "Adicionar CNPJ Pizzatto":
 
     uploaded_file = st.file_uploader("Envie sua planilha Excel", type=["xlsx"])
 
-    # Carrega a lista de CNPJs a partir do arquivo JSON
     try:
-        with open("cnpjs.json", "r", encoding="utf-8") as file:
-            lista_cnpjs = json.load(file)
-    except FileNotFoundError:
-        st.error("Arquivo 'cnpjs.json' não encontrado. Por favor, certifique-se de que ele está na mesma pasta do app.")
+        lista_cnpjs = st.secrets["cnpjs"]["lista"]
+    except Exception as e:
+        st.error("Erro ao carregar os CNPJs. Verifique as configurações em st.secrets.")
         lista_cnpjs = []
 
     if lista_cnpjs:
