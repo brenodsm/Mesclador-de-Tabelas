@@ -10,7 +10,7 @@ pagina = st.sidebar.selectbox("Escolha a funcionalidade:", ["Adicionar CNPJ Pizz
 
 # Página 1: Adicionar CNPJ
 if pagina == "Adicionar CNPJ Pizzatto":
-    st.header("Adicionar CNPJ Pizzatto à planilha")
+    st.header("Adicionar CNPJ à planilha")
 
     uploaded_file = st.file_uploader("Envie sua planilha Excel", type=["xlsx"])
 
